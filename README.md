@@ -9,7 +9,7 @@ Copie o repositpório para o diretório `home` do gitlab.
 
 ```
 cd /home/git
-https://github.com/Syonet/gitlab-backup-uploader.git
+git clone https://github.com/Syonet/gitlab-backup-uploader.git
 ```
 
 Fazça o download do [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). Para usar a versão 1.2.0:
