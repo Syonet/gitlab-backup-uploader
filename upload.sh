@@ -2,7 +2,7 @@
 #
 # Script de backup, que envia backups do GItlab para o Google Drive
 # 
-UPLOAD_HOME=/home/git/gitlab-backup-upload
+UPLOAD_HOME=/home/git/gitlab-backup-uploader
 cd $UPLOAD_HOME
 source ./conf/upload.cfg
 
