@@ -6,6 +6,8 @@ UPLOAD_HOME=/home/git/gitlab-backup-uploader
 cd $UPLOAD_HOME
 source ./conf/upload.cfg
 
+clear
+
 echo 
 echo 
 echo "Atualizando script de upload..."
