@@ -20,7 +20,7 @@ chmod a+x drive
 sudo mv /home/git/drive /usr/bin/
 ```
 
-Executa o Google Drive CLI e configura ele com a conta do Google Drive que receberá os arquivos. Ao executar, siga as instruções que aparecem no terminal.
+Execute o Google Drive CLI e configure ele com a conta do Google Drive que receberá os arquivos. Ao executar, siga as instruções que aparecem no terminal.
 
 ```
 drive
