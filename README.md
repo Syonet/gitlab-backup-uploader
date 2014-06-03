@@ -53,6 +53,7 @@ Edite o arquivo `upload.cfg`, e altere os seguintes itens:
 
 * O parâmetro `GITLAB_BACKUPS` com o caminho completo do diretório onde ficam os backups do Gitlab.
 * O parâmetro `GDRIVE_DIRETORIO` com o ID do diretório do Google Drive que vai receber os arquivos de backup.
+* O parâmetro `UPLOAD_COMPACTADO` para decidir se o backup será compactado antes do upload.
 
 Depois, basta colocar o script de upload no Crontab (com `crontab -e`), em um horário que não interfira na utilização da internet:
 

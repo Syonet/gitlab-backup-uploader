@@ -8,3 +8,6 @@ GITLAB_BACKUPS=""
 # ID do diretório que recebe os arquivos no Google Drive
 GDRIVE_DIRETORIO=""
 
+# Seleciona se o backup deve ser compactado com bz2 
+# antes do upload
+UPLOAD_COMPACTADO=true

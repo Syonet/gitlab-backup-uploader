@@ -28,12 +28,17 @@ echo
 echo "Copiando arquivo..."
 cp $UPLOAD_ARQUIVO .
 
-echo "Compactando arquivo $UPLOAD_ARQUIVO_NOME..."
-bzip2 --best $UPLOAD_ARQUIVO_NOME
+# Testa se é pra compactar o backup antes de enviar.
+if test "$UPLOAD_COMPACTADO" = true; then
+    echo "Compactando arquivo $UPLOAD_ARQUIVO_NOME..."
+    bzip2 --best $UPLOAD_ARQUIVO_NOME
 
-# Atualiza variáveis, para ficarem com nome e caminho corretos.
-UPLOAD_ARQUIVO=$UPLOAD_HOME/$UPLOAD_ARQUIVO_NOME.bz2
-UPLOAD_ARQUIVO_NOME=$UPLOAD_ARQUIVO_NOME.bz2
+    # Atualiza variáveis, para ficarem com nome e caminho corretos.
+    UPLOAD_ARQUIVO=$UPLOAD_HOME/$UPLOAD_ARQUIVO_NOME.bz2
+    UPLOAD_ARQUIVO_NOME=$UPLOAD_ARQUIVO_NOME.bz2
+else
+    echo "  => Aviso: o backup não será compactado pelo uploader."
+fi
 
 # Upload para Google Drive
 echo "Fazendo upload do arquivo $UPLOAD_ARQUIVO_NOME..."
