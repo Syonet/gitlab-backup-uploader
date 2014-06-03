@@ -12,7 +12,9 @@ cd /home/git
 git clone https://github.com/Syonet/gitlab-backup-uploader.git
 ```
 
-Fazça o download do [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). Para usar a versão 1.2.0:
+Recomendo utilizar o uploader via `git clone` ao invés de download, para que você possa se beneficiar da atualização automática dos scripts.
+
+Faça o download do [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). Para usar a versão 1.2.0:
 
 ```
 wget https://drive.google.com/uc?id=0B3X9GlR6EmbnbEhlZ20xNGVWTVE -O drive
