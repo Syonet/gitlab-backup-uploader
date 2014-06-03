@@ -56,7 +56,7 @@ Depois, basta colocar o script de upload no Crontab, em um horário que não int
 
 ```
 # Faz o upload do backup mais recente do Gitlab para o Google Drive as 10 da noite.
-0 22 * * * /home/git/gitlab/gitlab-backup-upload/upload.sh
+0 22 * * * /home/git/gitlab/gitlab-backup-uploader/upload.sh
 ```
 
 _____
