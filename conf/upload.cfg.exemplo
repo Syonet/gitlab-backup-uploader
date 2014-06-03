@@ -1,0 +1,13 @@
+#
+# Arquivo de configuração do script de upload
+#
+
+# Versão do Script
+VERSAO="v0.0.1"
+
+# Local onde ficam os arquivos de backup do Gitlab
+GITLAB_BACKUPS=""
+
+# ID do diretório que recebe os arquivos no Google Drive
+GDRIVE_DIRETORIO=""
+
