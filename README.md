@@ -5,7 +5,7 @@
 
 ### Instruções de Instalação:
 
-Copie o repositpório para o diretório `home` do gitlab.
+Copie o repositório para o diretório `home` do gitlab.
 
 ```
 cd /home/git
