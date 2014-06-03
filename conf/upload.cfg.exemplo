@@ -3,7 +3,7 @@
 #
 
 # Versão do Script
-VERSAO="v0.0.1"
+VERSAO="v0.1.0"
 
 # Local onde ficam os arquivos de backup do Gitlab
 GITLAB_BACKUPS=""
