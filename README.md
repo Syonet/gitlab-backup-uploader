@@ -43,16 +43,16 @@ Com o ID em mãos, cadastre-o no arquivo de configuração.
 Faça uma cópia do arquivo de configuração de exemplo:
 
 ```
-cd /home/git/gitlab-backup-upload/conf
+cd /home/git/gitlab-backup-uploader/conf
 cp upload.cfg.exemplo upload.cfg
 ```
 
-Edite o arquivo de configuração, e altera os seguintes itens:
+Edite o arquivo `upload.cfg`, e altere os seguintes itens:
 
 * O parâmetro `GITLAB_BACKUPS` com o caminho completo do diretório onde ficam os backups do Gitlab.
 * O parâmetro `GDRIVE_DIRETORIO` com o ID do diretório do Google Drive que vai receber os arquivos de backup.
 
-Depois, basta colocar o script de upload no Crontab, em um horário que não interfira na utilização da internet:
+Depois, basta colocar o script de upload no Crontab (com `crontab -e`), em um horário que não interfira na utilização da internet:
 
 ```
 # Faz o upload do backup mais recente do Gitlab para o Google Drive as 10 da noite.
