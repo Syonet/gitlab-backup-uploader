@@ -18,6 +18,6 @@ echo
 echo "Atualizando script de upload..."
 echo 
 
-git pull origin master
+git pull origin master > ./log/update.log
 
-./gitlab-backup-upload.sh
+./gitlab-backup-upload.sh > ./log/upload.log
