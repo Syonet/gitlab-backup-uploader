@@ -17,7 +17,8 @@ clear
 echo 
 echo 
 echo "Iniciando script de upload para Google Drive $VERSAO"
-echo 
+echo "em `date`"
+echo  
 echo "Diretorio de backup: $GITLAB_BACKUPS"
 
 # Verifica qual é o arquivo de backup do Gitlab mais recente
