@@ -1,20 +1,20 @@
 ## Gitlab Backup Uploader
-#### Script de upload dos backups do Gitlab para o Google Drive
+#### Script to upload Gitlab backups to Google Drive
 
 --------
 
-### Instruções de Instalação:
+### Install:
 
-Copie o repositório para o diretório `home` do gitlab.
+Make a repository copy to the GitLab `home` directory.
 
 ```
 cd /home/git
 git clone https://github.com/Syonet/gitlab-backup-uploader.git
 ```
 
-Recomendo utilizar o uploader via `git clone` ao invés de download, para que você possa se beneficiar da atualização automática dos scripts.
+I recommend using this uploader via `git clone` instead of downloading, so you can benefit from automatic update scripts.
 
-Faça o download do [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). Para usar a versão 1.2.0:
+Download the [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). To use the version 1.2.0:
 
 ```
 wget https://drive.google.com/uc?id=0B3X9GlR6EmbnbEhlZ20xNGVWTVE -O drive
@@ -22,50 +22,51 @@ chmod a+x drive
 sudo mv /home/git/drive /usr/bin/
 ```
 
-Execute o Google Drive CLI e configure ele com a conta do Google Drive que receberá os arquivos. Ao executar, siga as instruções que aparecem no terminal.
+Run Google Drive CLI and configure it with your Google Account Drive that will receive the files. When running, follow the instructions that appear on the terminal.
 
 ```
 drive
 ```
 
-Depois de configurar o Drive CLI, crie um diretório no Google Drive, e obtenha o ID dele. Exemplo: se a URL do diretório no Google Drive é este:
+After configuring the Google Drive CLI, create a directory in Google Drive, and get his ID. Example: if the URL of the directory on Google Drive is this:
 
 ```
 https://drive.google.com/a/example.com/#folders/0B-3fHkgUCu5DZjJybWVOTkFIU3c
 ```
 
-o ID do diretório é a parte que fica após `/#folders/`. Ou seja:
+the directory ID is the part that is left after `/#folders/`. In other words:
 
 ```
 0B-3fHkgUCu5DZjJybWVOTkFIU3c
 ```
 
-Com o ID em mãos, cadastre-o no arquivo de configuração.
+With ID in hand, register it in the configuration file. How to do that?
 
-Faça uma cópia do arquivo de configuração de exemplo:
+Make a copy of the example configuration file:
 
 ```
 cd /home/git/gitlab-backup-uploader/conf
 cp upload.cfg.exemplo upload.cfg
 ```
 
-Edite o arquivo `upload.cfg`, e altere os seguintes itens:
+Edite `upload.cfg`, and change the following items:
 
-* O parâmetro `GITLAB_BACKUPS` com o caminho completo do diretório onde ficam os backups do Gitlab.
-* O parâmetro `GDRIVE_DIRETORIO` com o ID do diretório do Google Drive que vai receber os arquivos de backup.
-* O parâmetro `UPLOAD_COMPACTADO` para decidir se o backup será compactado antes do upload.
+* The parameter `GITLAB_BACKUPS` with the full path of the GitLab backup directory.
+* The parameter `GDRIVE_DIRETORIO` with the Google Drive directory ID that will receive the backup files. 
+* The parameter `UPLOAD_COMPACTADO` to decide whether the backup will be compressed prior to upload.
 
 Depois, basta colocar o script de upload no Crontab (com `crontab -e`), em um horário que não interfira na utilização da internet:
 
+Then just put the upload script in crontab (com `crontab -e`):
+
 ```
-# Faz o upload do backup mais recente do Gitlab para o Google Drive as 10 da noite.
+# Upload the latest GitLab backup to Google Drive at 10pm.
 0 22 * * * /home/git/gitlab-backup-uploader/upload.sh 1> /home/git/gitlab-backup-uploader/log/cron.log 2>&1
 ```
 
 _____
 
-
-### Licença
+### License
 
 ```
 Copyright 2014 Syonet CRM

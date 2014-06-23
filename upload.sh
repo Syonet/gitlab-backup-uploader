@@ -1,9 +1,7 @@
 #!/bin/bash
 #
-# Atualiza e inicia o script de upload.
+# Update and start the upload script.
 # 
-
-# Tenta descobrir onde o script está instalado.
 pushd `dirname $0` > /dev/null
 UPLOAD_HOME=`pwd -P`
 popd > /dev/null
@@ -15,7 +13,7 @@ clear
 
 echo 
 echo 
-echo "Atualizando script de upload..."
+echo "Updating upload script..."
 echo 
 
 git pull origin master > ./log/update.log

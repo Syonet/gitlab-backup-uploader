@@ -1,13 +1,12 @@
 #
-# Arquivo de configuração do script de upload
+# Upload script configuration file
 #
 
-# Local onde ficam os arquivos de backup do Gitlab
+# Directory of GitLab backup files
 GITLAB_BACKUPS=""
 
-# ID do diretório que recebe os arquivos no Google Drive
+# Google Drive's Directory ID
 GDRIVE_DIRETORIO=""
 
-# Seleciona se o backup deve ser compactado com bz2 
-# antes do upload
+# Define if the backup file will be compressed before the upload.
 UPLOAD_COMPACTADO=true

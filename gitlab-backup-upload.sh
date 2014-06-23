@@ -1,9 +1,7 @@
 #!/bin/bash
 #
-# Script de backup, que envia backups do GItlab para o Google Drive
+# Backup Script: send GitLab backup files to Google Drive
 # 
-
-# Tenta descobrir onde o script está instalado.
 pushd `dirname $0` > /dev/null
 UPLOAD_HOME=`pwd -P`
 popd > /dev/null
@@ -16,74 +14,74 @@ clear
 
 echo 
 echo 
-echo "Iniciando script de upload para Google Drive $VERSAO"
-echo "em `date`"
+echo "Starting GitLab Backup Uploader version $VERSAO"
+echo "at `date`"
 echo  
-echo "Diretorio de backup: $GITLAB_BACKUPS"
+echo "Backup directory: $GITLAB_BACKUPS"
 
-# Verifica qual é o arquivo de backup do Gitlab mais recente
+# Verify what's the most recent backup file
 UPLOAD_ARQUIVO=$(ls -dt $GITLAB_BACKUPS/* | head -1)
 UPLOAD_ARQUIVO_NOME=$(basename $UPLOAD_ARQUIVO)
 
-echo "Arquivo a enviar: $UPLOAD_ARQUIVO"
+echo "File to upload: $UPLOAD_ARQUIVO"
 echo
 
-# Os backups do Gitlab são apenas agrupados.
-# Por isso, precisamos copiar o arquivo e compactá-lo,
-# antes de enviar ao Google Drive.
-echo "Copiando arquivo..."
+# The GitLab backup files are only grouped with .tar
+# So, we need to copy the file and compress it, 
+# before send it to Google Drive.
+echo "Copying file..."
 cp $UPLOAD_ARQUIVO .
 
-# Testa se é pra compactar o backup antes de enviar.
+# Test if you want to compress the file
 if test "$UPLOAD_COMPACTADO" = true; then
-    echo "Compactando arquivo $UPLOAD_ARQUIVO_NOME..."
+    echo "Compressing file $UPLOAD_ARQUIVO_NOME..."
     bzip2 --best $UPLOAD_ARQUIVO_NOME
 
-    # Atualiza variáveis, para ficarem com nome e caminho corretos.
+    # Update variables, to keep the correct names and paths.
     UPLOAD_ARQUIVO=$UPLOAD_HOME/$UPLOAD_ARQUIVO_NOME.bz2
     UPLOAD_ARQUIVO_NOME=$UPLOAD_ARQUIVO_NOME.bz2
 else
-    echo "  => Aviso: o backup não será compactado pelo uploader."
+    echo "  => Warning: the backup will not be compressed by uploader."
 fi
 
-# Upload para Google Drive
-echo "Fazendo upload do arquivo $UPLOAD_ARQUIVO_NOME..."
+# Upload the file to Google Drive
+echo "Uploading file $UPLOAD_ARQUIVO_NOME..."
 
 GDRIVE_RETORNO=$(drive upload -f $UPLOAD_ARQUIVO_NOME -p $GDRIVE_DIRETORIO)
 
 GDRIVE_ID=$(echo $GDRIVE_RETORNO |cut -d" " -f2)
 GDRIVE_ARQUIVO=$(echo $GDRIVE_RETORNO |cut -d" " -f4)
 
-echo "  => Identificador: $GDRIVE_ID"
-echo "  => Arquivo      : $GDRIVE_ARQUIVO"
+echo "  => ID  : $GDRIVE_ID"
+echo "  => File: $GDRIVE_ARQUIVO"
 
-# Remove arquivo antigo de backup
+# Remove the previous file from Google Drive
 if [ -s ./conf/gdrive-anterior ]
 then
   GDRIVE_ANTERIOR=$(cat ./conf/gdrive-anterior)
 
-  echo "Removendo arquivo anterior..."
-  echo "  => Id: $GDRIVE_ANTERIOR"
+  echo "Removing previous file..."
+  echo "  => ID: $GDRIVE_ANTERIOR"
 
   drive delete --id $GDRIVE_ANTERIOR
 
 else
   echo
-  echo "Arquivo com ID anterior está vazio."
-  echo "Se na próxima execução ele continuar vazio,"
-  echo "verifique se há algum problema no backup."
+  echo "File with previous ID is empty."
+  echo "If the next time it remains empty,"
+  echo "check for any problem in backup."
   echo
 fi
 
-# Salva ID do arquivo de backup atual.
+# Save the uploaded file ID
 $(echo $GDRIVE_ID > ./conf/gdrive-anterior)
 
-# Remove arquivo compactado de backup.
-# Não há a necessidade de apagar o arquivo .tar do gitlab,
-# porque o Gitlab controla quais arquivos precisam ficar.
-echo "Removendo arquivo local $UPLOAD_ARQUIVO_NOME..."
+# Remove the compressed file.
+# We don't need to remove the GitLab backup file, 
+# because GitLab itself controls what file will be kept.
+echo "Removing local file $UPLOAD_ARQUIVO_NOME..."
 rm $UPLOAD_ARQUIVO_NOME
 
 echo
-echo "Concluído. Fim do script de upload."
+echo "Done. End of upload script."
 echo
