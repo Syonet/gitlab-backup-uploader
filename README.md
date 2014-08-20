@@ -55,8 +55,6 @@ Edite `upload.cfg`, and change the following items:
 * The parameter `GDRIVE_DIRETORIO` with the Google Drive directory ID that will receive the backup files. 
 * The parameter `UPLOAD_COMPACTADO` to decide whether the backup will be compressed prior to upload.
 
-Depois, basta colocar o script de upload no Crontab (com `crontab -e`), em um horário que não interfira na utilização da internet:
-
 Then just put the upload script in crontab (com `crontab -e`):
 
 ```
