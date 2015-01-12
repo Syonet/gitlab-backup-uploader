@@ -14,10 +14,10 @@ git clone https://github.com/Syonet/gitlab-backup-uploader.git
 
 I recommend using this uploader via `git clone` instead of downloading, so you can benefit from automatic update scripts.
 
-Download the [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). To use the version 1.2.0:
+Download the [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). To use the version 1.3.0:
 
 ```
-wget https://drive.google.com/uc?id=0B3X9GlR6EmbnbEhlZ20xNGVWTVE -O drive
+wget https://drive.google.com/uc?id=0B3X9GlR6EmbnTjk4MGNEbEFRRWs -O drive
 chmod a+x drive
 sudo mv /home/git/drive /usr/bin/
 ```
@@ -31,13 +31,13 @@ drive
 After configuring the Google Drive CLI, create a directory in Google Drive, and get his ID. Example: if the URL of the directory on Google Drive is this:
 
 ```
-https://drive.google.com/a/example.com/#folders/0B-3fHkgUCu5DZjJybWVOTkFIU3c
+https://drive.google.com/drive/u/0/#folders/0B43Qn3ksX-mMRzl1S05mbDNIdGc
 ```
 
 the directory ID is the part that is left after `/#folders/`. In other words:
 
 ```
-0B-3fHkgUCu5DZjJybWVOTkFIU3c
+0B43Qn3ksX-mMRzl1S05mbDNIdGc
 ```
 
 With ID in hand, register it in the configuration file. How to do that?
