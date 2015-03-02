@@ -14,10 +14,10 @@ git clone https://github.com/Syonet/gitlab-backup-uploader.git
 
 I recommend using this uploader via `git clone` instead of downloading, so you can benefit from automatic update scripts.
 
-Download the [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). To use the version 1.3.0:
+Download the [Google Drive CLI](https://github.com/prasmussen/gdrive#installation). To use the version 1.5.1 (for Linux 64bits):
 
 ```
-wget https://drive.google.com/uc?id=0B3X9GlR6EmbnTjk4MGNEbEFRRWs -O drive
+wget https://drive.google.com/uc?id=0B3X9GlR6EmbndFBkTWllLWxEVWM -O drive
 chmod a+x drive
 sudo mv /home/git/drive /usr/bin/
 ```
@@ -49,7 +49,7 @@ cd /home/git/gitlab-backup-uploader/conf
 cp upload.cfg.exemplo upload.cfg
 ```
 
-Edite `upload.cfg`, and change the following items:
+Edit `upload.cfg`, and change the following items:
 
 * The parameter `GITLAB_BACKUPS` with the full path of the GitLab backup directory.
 * The parameter `GDRIVE_DIRETORIO` with the Google Drive directory ID that will receive the backup files. 
